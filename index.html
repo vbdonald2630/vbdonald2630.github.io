@@ -41,8 +41,18 @@
             max-width: 400px;
             width: 100%;
         }
-        h1 { margin-bottom: 0.2rem; letter-spacing: -1px; }
-        p.bio { color: #aaa; margin-bottom: 2rem; }
+        h1 {
+            margin-bottom: 0.2rem;
+            letter-spacing: -1px;
+            color: #F0B310;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        p.bio {
+            color: #a8c0e8;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            line-height: 1.5;
+        }
         .profile-img {
             width: 280px;
             height: 280px;
@@ -50,51 +60,64 @@
             object-fit: cover;
             display: block;
             margin: 0 auto 20px;
-            border: 3px solid #333;
+            border: 4px solid #15356D;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         
-        /* The Links */
+        /* MSUB colors: blue #15356D, gold #F0B310 */
         .link-card {
             display: block;
-            background: #222;
-            color: white;
+            background: #15356D;
+            color: #fff;
             text-decoration: none;
             padding: 16px;
             margin-bottom: 12px;
             border-radius: 12px;
             font-weight: 600;
-            border: 1px solid #333;
-            transition: transform 0.2s, background 0.2s;
+            border: 2px solid #F0B310;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .link-card:hover {
-            background: #333;
+            background: #1a4085;
+            border-color: #f5c420;
             transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
         
         /* Join the Crew Section */
         .crew-box {
             margin-top: 30px;
             padding: 20px;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(240, 179, 16, 0.4);
+        }
+        .crew-box p {
+            color: #F0B310;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         .crew-btn {
-            background: #fff;
-            color: #000;
-            border: none;
+            background: #F0B310;
+            color: #15356D;
+            border: 2px solid #15356D;
             padding: 10px 20px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             font-size: 0.8rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .crew-btn:hover {
+            background: #f5c420;
+            transform: scale(1.02);
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="images/BackgroundMontanaRiver.mp4" type="video/mp4">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" disablePictureInPicture>
+            <source src="images/donalds_leaving_wallace_chasing.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -109,11 +132,43 @@
         <a href="https://x.com/DonaldVoetberg" class="link-card" target="_blank" rel="noopener">X — @DonaldVoetberg</a>
 
         <div class="crew-box">
-            <p style="font-size: 0.9rem; color: #888;">Follow the build.</p>
+            <p style="font-size: 0.9rem;">Follow the build.</p>
             <button class="crew-btn" onclick="alert('Email form coming soon!')">Join the Crew</button>
         </div>
     </div>
     </section>
 
+    <script>
+        (function() {
+            var v = document.querySelector('.hero-video');
+            if (!v) return;
+            // Safari often ignores HTML muted; set in JS and ensure no volume
+            v.muted = true;
+            v.volume = 0;
+            function tryPlay() {
+                v.muted = true;
+                v.play().catch(function() {});
+            }
+            tryPlay();
+            // Safari may not be ready until video has loaded
+            v.addEventListener('loadeddata', tryPlay);
+            v.addEventListener('canplay', tryPlay);
+            v.addEventListener('loadedmetadata', tryPlay);
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(tryPlay, 100);
+            });
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') tryPlay();
+            });
+            // First touch/click often unblocks Safari autoplay; start video then
+            document.body.addEventListener('touchstart', tryPlayOnce, { passive: true });
+            document.body.addEventListener('click', tryPlayOnce, { once: true });
+            function tryPlayOnce() {
+                tryPlay();
+                document.body.removeEventListener('touchstart', tryPlayOnce);
+            }
+            window.addEventListener('pagehide', function() { v.pause(); });
+        })();
+    </script>
 </body>
 </html>
