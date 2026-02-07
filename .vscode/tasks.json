@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Git Pump",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "$date = Get-Date -Format 'yyyy-MM-dd HH:mm'; $msg = 'automated update: ' + $date; Write-Host '🚀 Starting Git Pump...' -ForegroundColor Cyan; git add .; if (git diff --staged --quiet) { Write-Host '⚠️ Nothing to commit.' -ForegroundColor Yellow } else { git commit -m $msg; Write-Host '⬆️ Pushing...' -ForegroundColor Cyan; git push; if ($?) { Write-Host '✅ SUCCESS' -ForegroundColor Green; [Console]::Beep(880, 300) } }",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
