@@ -1,0 +1,13 @@
+{
+    "window.title": "🚀 VENTURE: ${activeEditorShort}${separator}${rootName}",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#15356D",
+        "titleBar.activeForeground": "#F0B310",
+        "titleBar.inactiveBackground": "#0D2245",
+        "activityBar.background": "#15356D",
+        "activityBar.foreground": "#F0B310",
+        "statusBar.background": "#15356D",
+        "statusBar.foreground": "#F0B310",
+        "statusBarItem.remoteBackground": "#15356D"
+    }
+}
