@@ -9,21 +9,49 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #111;
             color: #eee;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .hero {
+            position: relative;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
             padding: 20px;
             text-align: center;
         }
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+        }
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 400px;
             width: 100%;
         }
         h1 { margin-bottom: 0.2rem; letter-spacing: -1px; }
         p.bio { color: #aaa; margin-bottom: 2rem; }
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 3px solid #333;
+        }
         
         /* The Links */
         .link-card {
@@ -64,21 +92,28 @@
 </head>
 <body>
 
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="images/BackgroundMontanaRiver.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay" aria-hidden="true"></div>
+
     <div class="container">
-        <div style="width: 100px; height: 100px; background: #333; border-radius: 50%; margin: 0 auto 20px;"></div>
+        <img src="images/profile.png" alt="Donald Voetberg" class="profile-img">
 
         <h1>Donald Voetberg</h1>
         <p class="bio">MSUB XC/Track '26<br>WI ➔ Montana<br>Running | Fishing | Mountains</p>
 
-        <a href="https://instagram.com/YOUR_HANDLE" class="link-card">Instagram</a>
-        <a href="https://tiktok.com/@YOUR_HANDLE" class="link-card">TikTok</a>
-        <a href="https://youtube.com/@YOUR_HANDLE" class="link-card">YouTube</a>
+        <a href="https://instagram.com/donald.voetberg" class="link-card" target="_blank" rel="noopener">Instagram — @donald.voetberg</a>
+        <a href="https://tiktok.com/@donald.voetberg" class="link-card" target="_blank" rel="noopener">TikTok — @donald.voetberg</a>
+        <a href="https://x.com/DonaldVoetberg" class="link-card" target="_blank" rel="noopener">X — @DonaldVoetberg</a>
 
         <div class="crew-box">
             <p style="font-size: 0.9rem; color: #888;">Follow the build.</p>
             <button class="crew-btn" onclick="alert('Email form coming soon!')">Join the Crew</button>
         </div>
     </div>
+    </section>
 
 </body>
 </html>
