@@ -1,19 +1,14 @@
-# deploy.ps1 - Plain text version (No Emojis)
+# deploy.ps1 - Git Pump (timestamp commit, no alphanumeric versioning)
 Set-Location "$PSScriptRoot\.."
 
-Write-Host "Starting Deployment..." -ForegroundColor Cyan
+$date = Get-Date -Format 'yyyy-MM-dd HH:mm'
+$msg = 'automated update: ' + $date
 
-# 1. Add changes
 git add .
-
-# 2. Commit with date
-$date = Get-Date -Format "yyyy-MM-dd"
-$msg = "Site Update: $date"
-Write-Host "Committing: $msg" -ForegroundColor Yellow
-git commit -m "$msg"
-
-# 3. Push to GitHub
-Write-Host "Pushing to GitHub..." -ForegroundColor Yellow
-git push origin main
-
-Write-Host "SUCCESS! Site is live." -ForegroundColor Green
+if (git diff --staged --quiet) {
+    Write-Host 'Nothing to commit, repository is clean.'
+} else {
+    git commit -m $msg
+    git push
+    if ($?) { [Console]::Beep(880, 300); Write-Host 'Pushed successfully.' }
+}
