@@ -5,8 +5,10 @@ $date = Get-Date -Format 'yyyy-MM-dd HH:mm'
 $msg = 'automated update: ' + $date
 
 git add .
-if (git diff --staged --quiet) {
+$status = git status --porcelain
+if (-not $status) {
     Write-Host 'Nothing to commit, repository is clean.'
+    exit 0
 } else {
     git commit -m $msg
     git push
