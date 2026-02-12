@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Racer | Donald Voetberg — Running &amp; XC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .progress-bar-wrap { background: rgba(21,53,109,0.5); border-radius: 12px; height: 24px; overflow: hidden; margin-bottom: 24px; border: 1px solid rgba(240,179,16,0.3); }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, #15356D, #F0B310); border-radius: 0; transition: width 0.4s; }
+        .pr-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        .pr-table th, .pr-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(240,179,16,0.2); }
+        .pr-table th { color: #F0B310; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .pr-table td { color: #e0e8f0; }
+        .schedule-list { list-style: none; padding: 0; margin: 0; }
+        .schedule-list li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .schedule-list a { color: #a8c0e8; text-decoration: none; }
+        .schedule-list a:hover { color: #F0B310; }
+        .schedule-date { font-weight: 700; color: #F0B310; min-width: 140px; }
+        .stats-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+        @media (max-width: 420px) { .stats-links { grid-template-columns: 1fr; } }
+        .stats-link-card {
+            display: block;
+            padding: 16px 18px;
+            background: rgba(21, 53, 109, 0.35);
+            border: 1px solid rgba(240, 179, 16, 0.25);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #e0e8f0;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .stats-link-card:hover {
+            border-color: rgba(240, 179, 16, 0.5);
+            background: rgba(21, 53, 109, 0.5);
+        }
+        .stats-link-card .stats-link-label { font-size: 0.75rem; color: #F0B310; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+        .stats-link-card .stats-link-name { font-weight: 600; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-logo">Donald Voetberg</a>
+        <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
+        <nav class="site-nav"></nav>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+    </header>
+
+    <section class="subpage-hero">
+        <h1>The Racer</h1>
+        <p>Track &amp; cross country—goals, PRs, and the full competition schedule.</p>
+    </section>
+
+    <main class="page-content">
+        <section id="stats" aria-label="Running stats">
+            <h3 class="section-title">Running Stats</h3>
+            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 14px;">Live results and meet history.</p>
+            <div class="stats-links">
+                <a href="https://wi.milesplit.com/athletes/13646503-donald-voetberg" class="stats-link-card" target="_blank" rel="noopener noreferrer">
+                    <span class="stats-link-label">XC &amp; Track</span>
+                    <span class="stats-link-name">MileSplit</span>
+                </a>
+                <a href="https://www.athletic.net/athlete/23587912/track-and-field/" class="stats-link-card" target="_blank" rel="noopener noreferrer">
+                    <span class="stats-link-label">Track &amp; Field</span>
+                    <span class="stats-link-name">Athletic.net</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="goals">
+            <h3 class="section-title">Season Goals</h3>
+            <p style="color: #a8c0e8; margin-bottom: 8px;">Progress toward 2026 goals (placeholder—update as season advances)</p>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar" style="width: 40%;"></div>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 32px;">
+            <h3 class="section-title">Personal Records</h3>
+            <table class="pr-table">
+                <thead>
+                    <tr><th>Event</th><th>PR</th><th>Meet</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1600m</td><td>—</td><td>—</td></tr>
+                    <tr><td>3200m</td><td>—</td><td>—</td></tr>
+                    <tr><td>5K (XC)</td><td>—</td><td>—</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: #8a9fb8; margin-top: 8px;">Table updates as PRs are set. See <a href="https://wi.milesplit.com/athletes/13646503-donald-voetberg" target="_blank" rel="noopener noreferrer" style="color: #F0B310;">MileSplit</a> &amp; <a href="https://www.athletic.net/athlete/23587912/track-and-field/" target="_blank" rel="noopener noreferrer" style="color: #F0B310;">Athletic.net</a> for live data.</p>
+        </section>
+
+        <section id="schedule">
+            <h3 class="section-title">Full Schedule</h3>
+            <ul class="schedule-list">
+                <li><span class="schedule-date">Tue, Mar 17</span> <a href="https://www.google.com/maps/search/Kolf+Sports+Center+Oshkosh+WI" target="_blank" rel="noopener noreferrer">Kolf Indoor Invite</a> <span style="color: #8a9fb8;">(Oshkosh)</span></li>
+                <li><span class="schedule-date">Sat, Mar 21</span> <a href="https://www.google.com/maps/search/UWSP+Multi-Activity+Center+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">UWSP MAC Invite</a> <span style="color: #8a9fb8;">(Stevens Point)</span></li>
+                <li><span class="schedule-date">Sat, Mar 28</span> <a href="https://www.google.com/maps/search/Ripon+College+Ripon+WI" target="_blank" rel="noopener noreferrer">Willmore Invite</a> <span style="color: #8a9fb8;">(Ripon College)</span></li>
+                <li><span class="schedule-date">Thu, Apr 2</span> <a href="https://www.google.com/maps/search/Stevens+Point+Area+Senior+High+School+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">Triangular</a> <span style="color: #8a9fb8;">(SPASH Fieldhouse)</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://instagram.com/donald.voetberg" class="footer-social-btn btn-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@donald.voetberg" class="footer-social-btn btn-tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/DonaldVoetberg" class="footer-social-btn btn-x" aria-label="X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@Donald.Voetberg" class="footer-social-btn btn-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-contact">Business &amp; media: <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a></p>
+        <p class="footer-tagline">Donald Voetberg · SPASH '26 ➔ MSUB XC/Track Commit</p>
+    </footer>
+
+    <script>
+        var t = document.querySelector('.nav-toggle');
+        var n = document.querySelector('.site-nav');
+        if (t && n) t.addEventListener('click', function() { n.classList.toggle('open'); });
+    </script>
+</body>
+</html>

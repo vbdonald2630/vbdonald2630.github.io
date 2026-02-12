@@ -3,406 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://donaldvoetberg.com/" />
     <title>Donald Voetberg | SPASH '26 ➔ MSUB Commit</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #111;
-            color: #eee;
-            margin: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-        }
-        .hero-video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-        }
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            margin-bottom: 0.2rem;
-            letter-spacing: -1px;
-            color: #F0B310;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-        }
-        h2 {
-            margin: 0 0 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #a8c0e8;
-            letter-spacing: 0.02em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7);
-            padding: 8px 12px;
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 8px;
-            display: inline-block;
-        }
-        h2 .sub-spash {
-            color: #ff6b7a;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7);
-        }
-        h2 .sub-msub-blue {
-            color: #6ba3e8;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7);
-        }
-        h2 .sub-msub-blue:hover { color: #7db3f0; }
-        h2 .sub-msub-gold {
-            color: #F0B310;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7);
-        }
-        p.bio {
-            color: #e0e8f0;
-            margin-bottom: 2rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7);
-            line-height: 1.6;
-            font-size: 1.05rem;
-            font-weight: 500;
-            padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-        }
-        .profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto 20px;
-            border: 4px solid #15356D;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-        
-        /* MSUB colors: blue #15356D, gold #F0B310 */
-        .link-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #15356D;
-            color: #fff;
-            text-decoration: none;
-            padding: 16px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 2px solid #F0B310;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        .link-card svg {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-        .link-card:hover {
-            background: #1a4085;
-            border-color: #f5c420;
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        }
-        
-        /* Join the Crew Section */
-        .crew-box {
-            margin-top: 30px;
-            padding: 20px;
-            border-top: 1px solid rgba(240, 179, 16, 0.4);
-        }
-        .crew-box p {
-            color: #F0B310;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        .crew-btn {
-            display: inline-block;
-            background: #F0B310;
-            color: #15356D;
-            border: 2px solid #15356D;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .crew-btn:hover {
-            background: #f5c420;
-            transform: scale(1.02);
-        }
-        .contact-footer {
-            margin-top: 28px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(240, 179, 16, 0.35);
-            font-size: 0.9rem;
-        }
-        .contact-footer p {
-            color: #a8c0e8;
-            margin: 0 0 6px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        .contact-footer a {
-            color: #F0B310;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .contact-footer a:hover {
-            text-decoration: underline;
-        }
-        .news-section {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(240, 179, 16, 0.35);
-        }
-        .news-section h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #F0B310;
-            margin: 0 0 12px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .news-item {
-            margin-bottom: 10px;
-        }
-        .news-item a {
-            color: #a8c0e8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: block;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            transition: color 0.2s;
-        }
-        .news-item a:hover {
-            color: #F0B310;
-        }
-        .news-item .news-caption {
-            display: block;
-            color: #d0dce8;
-            font-size: 0.85rem;
-            margin-top: 2px;
-        }
-        .events-section {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(240, 179, 16, 0.35);
-        }
-        .events-section h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #F0B310;
-            margin: 0 0 12px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .events-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .events-list li {
-            margin-bottom: 8px;
-        }
-        .events-list a {
-            color: #a8c0e8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .events-list a:hover {
-            color: #F0B310;
-        }
-        .event-loc {
-            color: #8a9fb8;
-            font-size: 0.85em;
-        }
-        .events-note {
-            margin: 10px 0 0;
-            font-size: 0.75rem;
-            color: #7a8fa0;
-        }
-        .stats-section {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(240, 179, 16, 0.35);
-        }
-        .stats-section h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #F0B310;
-            margin: 0 0 12px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .stats-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .stats-list li {
-            margin-bottom: 8px;
-        }
-        .stats-list a {
-            color: #a8c0e8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .stats-list a:hover {
-            color: #F0B310;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+
+    <header class="site-header">
+        <a href="index.html" class="site-logo">Donald Voetberg</a>
+        <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
+        <nav class="site-nav"></nav>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+    </header>
 
     <section class="hero">
         <video class="hero-video" autoplay muted loop playsinline preload="auto" disablePictureInPicture>
             <source src="images/donalds_leaving_wallace_chasing.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay" aria-hidden="true"></div>
-
-    <div class="container">
-        <img src="images/profile.png" alt="Donald Voetberg" class="profile-img">
-
-        <h1>Donald Voetberg</h1>
-        <h2><span class="sub-spash">SPASH '26</span> ➔ <a href="https://www.msubillings.edu/" target="_blank" rel="noopener noreferrer" class="sub-msub-blue" style="text-decoration: none;">MSUB</a> <span class="sub-msub-gold">XC/Track</span> <span class="sub-msub-blue">Commit</span></h2>
-        <p class="bio">Forging a bold new path from Wisconsin's familiarity to Big Sky's possibilities.</p>
-
-        <a href="https://instagram.com/donald.voetberg" class="link-card" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span>Instagram — @donald.voetberg</span>
-        </a>
-        <a href="https://www.tiktok.com/@donald.voetberg" class="link-card" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-            <span>TikTok — @donald.voetberg</span>
-        </a>
-        <a href="https://x.com/DonaldVoetberg" class="link-card" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <span>X — @DonaldVoetberg</span>
-        </a>
-        <a href="https://www.youtube.com/@Donald.Voetberg" class="link-card" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span>YouTube — @Donald.Voetberg</span>
-        </a>
-
-        <section class="events-section" aria-label="Upcoming events">
-            <h3>What's Happening</h3>
-            <ul class="events-list">
-                <li><a href="https://www.google.com/maps/search/Kolf+Sports+Center+Oshkosh+WI" target="_blank" rel="noopener noreferrer">Tue, Mar 17 — Kolf Indoor Invite <span class="event-loc">(Oshkosh)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/UWSP+Multi-Activity+Center+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">Sat, Mar 21 — UWSP MAC Invite <span class="event-loc">(Stevens Point)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/Ripon+College+Ripon+WI" target="_blank" rel="noopener noreferrer">Sat, Mar 28 — Willmore Invite <span class="event-loc">(Ripon College)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/Stevens+Point+Area+Senior+High+School+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">Thu, Apr 2 — Triangular <span class="event-loc">(SPASH Fieldhouse)</span></a></li>
-            </ul>
-            <p class="events-note">Links open maps for directions.</p>
-        </section>
-
-        <section class="news-section" aria-label="In the news">
-            <h3>In The News</h3>
-            <div class="news-item">
-                <a href="https://www.waow.com/news/top-stories/four-straight-and-forever-spash-seniors-lead-panthers-to-historic-4-peat/article_1353559e-700c-40d9-a6f2-fa25cc14c5c2.html" target="_blank" rel="noopener noreferrer">
-                    WAOW — Four straight and forever
-                    <span class="news-caption">SPASH seniors on the Panthers’ historic fourth straight D1 state title; Donald on team bond and composure.</span>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="https://www.waow.com/news/top-stories/area-athletes-make-college-dreams-official-on-ncaa-early-signing-day/article_32beccca-1fd5-41c9-9e26-ea3c2acf929d.html" target="_blank" rel="noopener noreferrer">
-                    WAOW — Area athletes make college dreams official
-                    <span class="news-caption">Donald among SPASH signees on NCAA Early Signing Day (Cross Country / Track, MSUB).</span>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="https://www.stevenspointjournal.com/picture-gallery/sports/high-school/2025/11/12/see-best-photos-of-spash-athletes-at-early-signing-day/87234625007/" target="_blank" rel="noopener noreferrer">
-                    Stevens Point Journal — Signing day photos
-                    <span class="news-caption">Best photos from SPASH early signing day, including Donald’s MSUB signing with family.</span>
-                </a>
-            </div>
-        </section>
-
-        <section class="events-section" aria-label="Upcoming events">
-            <h3>What’s Happening</h3>
-            <ul class="events-list">
-                <li><a href="https://www.google.com/maps/search/Kolf+Sports+Center+Oshkosh+WI" target="_blank" rel="noopener noreferrer">Tue, Mar 17 — Kolf Indoor Invite <span class="event-loc">(Oshkosh)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/UWSP+Multi-Activity+Center+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">Sat, Mar 21 — UWSP MAC Invite <span class="event-loc">(Stevens Point)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/Ripon+College+Ripon+WI" target="_blank" rel="noopener noreferrer">Sat, Mar 28 — Willmore Invite <span class="event-loc">(Ripon College)</span></a></li>
-                <li><a href="https://www.google.com/maps/search/Stevens+Point+Area+Senior+High+School+Stevens+Point+WI" target="_blank" rel="noopener noreferrer">Thu, Apr 2 — Triangular <span class="event-loc">(SPASH Fieldhouse)</span></a></li>
-            </ul>
-            <p class="events-note">Links open maps for directions.</p>
-        </section>
-
-        <section class="stats-section" aria-label="Running stats">
-            <h3>Running Stats</h3>
-            <ul class="stats-list">
-                <li><a href="https://wi.milesplit.com/athletes/13646503-donald-voetberg" target="_blank" rel="noopener noreferrer">MileSplit</a></li>
-                <li><a href="https://www.athletic.net/athlete/23587912/track-and-field/" target="_blank" rel="noopener noreferrer">Athletic.net</a></li>
-            </ul>
-        </section>
-
-        <div class="crew-box">
-            <p style="font-size: 0.9rem;">Follow the build.</p>
-            <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="crew-btn" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+        <div class="container">
+            <img src="images/profile.png" alt="Donald Voetberg" class="profile-img">
+            <h1>Donald Voetberg</h1>
+            <h2><span class="sub-spash">SPASH '26</span> ➔ <a href="https://www.msubillings.edu/" target="_blank" rel="noopener noreferrer" class="sub-msub-blue" style="text-decoration: none;">MSUB</a> <span class="sub-msub-gold">XC/Track</span> <span class="sub-msub-blue">Commit</span></h2>
+            <p class="bio">Forging a bold new path from Wisconsin's familiarity to Big Sky's possibilities.</p>
+            <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="hero-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
         </div>
-
-        <footer class="contact-footer">
-            <p>Business &amp; media</p>
-            <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a>
-        </footer>
-    </div>
     </section>
+
+    <section class="news-section" aria-label="In the news">
+        <div class="news-section-inner">
+            <h2 class="news-section-title">In The News</h2>
+            <div class="news-cards">
+                <a href="https://www.waow.com/news/top-stories/area-athletes-make-college-dreams-official-on-ncaa-early-signing-day/article_32beccca-1fd5-41c9-9e26-ea3c2acf929d.html" class="news-card" target="_blank" rel="noopener noreferrer">
+                    <span class="news-date">Nov 12, 2025</span>
+                    <span class="news-source">WAOW</span>
+                    <span class="news-headline">Area athletes make college dreams official — Donald signs MSUB</span>
+                </a>
+                <a href="https://www.stevenspointjournal.com/picture-gallery/sports/high-school/2025/11/12/see-best-photos-of-spash-athletes-at-early-signing-day/87234625007/" class="news-card" target="_blank" rel="noopener noreferrer">
+                    <span class="news-date">Nov 12, 2025</span>
+                    <span class="news-source">Stevens Point Journal</span>
+                    <span class="news-headline">Signing day photos at SPASH</span>
+                </a>
+                <a href="https://www.waow.com/news/top-stories/four-straight-and-forever-spash-seniors-lead-panthers-to-historic-4-peat/article_1353559e-700c-40d9-a6f2-fa25cc14c5c2.html" class="news-card" target="_blank" rel="noopener noreferrer">
+                    <span class="news-date">Nov 5, 2025</span>
+                    <span class="news-source">WAOW</span>
+                    <span class="news-headline">Four straight and forever — SPASH seniors on historic 4-peat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://instagram.com/donald.voetberg" class="footer-social-btn btn-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@donald.voetberg" class="footer-social-btn btn-tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/DonaldVoetberg" class="footer-social-btn btn-x" aria-label="X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@Donald.Voetberg" class="footer-social-btn btn-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-contact">Business &amp; media: <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a></p>
+        <p class="footer-tagline">Donald Voetberg · SPASH '26 ➔ MSUB XC/Track Commit</p>
+    </footer>
 
     <script>
         (function() {
             var v = document.querySelector('.hero-video');
-            if (!v) return;
-            // Safari often ignores HTML muted; set in JS and ensure no volume
-            v.muted = true;
-            v.volume = 0;
-            function tryPlay() {
+            if (v) {
                 v.muted = true;
-                v.play().catch(function() {});
-            }
-            tryPlay();
-            // Safari may not be ready until video has loaded
-            v.addEventListener('loadeddata', tryPlay);
-            v.addEventListener('canplay', tryPlay);
-            v.addEventListener('loadedmetadata', tryPlay);
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(tryPlay, 100);
-            });
-            document.addEventListener('visibilitychange', function() {
-                if (document.visibilityState === 'visible') tryPlay();
-            });
-            // First touch/click often unblocks Safari autoplay; start video then
-            document.body.addEventListener('touchstart', tryPlayOnce, { passive: true });
-            document.body.addEventListener('click', tryPlayOnce, { once: true });
-            function tryPlayOnce() {
+                v.volume = 0;
+                function tryPlay() { v.muted = true; v.play().catch(function() {}); }
                 tryPlay();
-                document.body.removeEventListener('touchstart', tryPlayOnce);
+                v.addEventListener('loadeddata', tryPlay);
+                v.addEventListener('canplay', tryPlay);
+                document.addEventListener('DOMContentLoaded', function() { setTimeout(tryPlay, 100); });
+                document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'visible') tryPlay(); });
+                document.body.addEventListener('touchstart', function once() { tryPlay(); document.body.removeEventListener('touchstart', once); }, { passive: true });
+                document.body.addEventListener('click', function once() { tryPlay(); }, { once: true });
             }
-            window.addEventListener('pagehide', function() { v.pause(); });
+            var t = document.querySelector('.nav-toggle');
+            var n = document.querySelector('.site-nav');
+            if (t && n) {
+                t.addEventListener('click', function() { n.classList.toggle('open'); });
+            }
         })();
     </script>
 </body>

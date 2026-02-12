@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Donald Voetberg — Transition to Montana</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .countdown-box { background: rgba(21,53,109,0.5); border: 2px solid #F0B310; border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 32px; }
+        .countdown-box .big { font-size: 2rem; font-weight: 800; color: #F0B310; }
+        .countdown-box p { margin: 8px 0 0; color: #a8c0e8; }
+        .card { background: rgba(21,53,109,0.3); border: 1px solid rgba(240,179,16,0.3); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+        .card h4 { color: #F0B310; margin: 0 0 8px; font-size: 1rem; }
+        .card ul { margin: 0; padding-left: 20px; color: #e0e8f0; }
+        .card .placeholder { color: #8a9fb8; font-style: italic; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-logo">Donald Voetberg</a>
+        <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
+        <nav class="site-nav"></nav>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+    </header>
+
+    <section class="subpage-hero">
+        <h1>The Journey</h1>
+        <p>Countdown to Montana—the move, the vessel, and the transition.</p>
+    </section>
+
+    <main class="page-content">
+        <section class="countdown-box">
+            <div class="big">Countdown to Montana</div>
+            <p>Fall 2026 — MSUB move-in. Dates and milestones will go here.</p>
+        </section>
+
+        <section class="card">
+            <h4>The Vessel (Nissan Frontier)</h4>
+            <p class="placeholder">Prep for the 1,000-mile move: gear, maintenance, and road-trip plan. Updates coming.</p>
+        </section>
+
+        <section class="card">
+            <h4>Transition Logistics</h4>
+            <ul>
+                <li><strong>Altitude acclimation</strong> — placeholder for training notes</li>
+                <li><strong>Packing &amp; move updates</strong> — placeholder</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://instagram.com/donald.voetberg" class="footer-social-btn btn-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@donald.voetberg" class="footer-social-btn btn-tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/DonaldVoetberg" class="footer-social-btn btn-x" aria-label="X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@Donald.Voetberg" class="footer-social-btn btn-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-contact">Business &amp; media: <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a></p>
+        <p class="footer-tagline">Donald Voetberg · SPASH '26 ➔ MSUB XC/Track Commit</p>
+    </footer>
+
+    <script>
+        var t = document.querySelector('.nav-toggle');
+        var n = document.querySelector('.site-nav');
+        if (t && n) t.addEventListener('click', function() { n.classList.toggle('open'); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grind | Donald Voetberg — About &amp; Journal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Grind hero: high-contrast, wide typography, signature name */
+        .grind-hero {
+            background: linear-gradient(160deg, var(--msub-blue) 0%, #0a1a35 100%);
+            padding: 48px 20px 56px;
+            text-align: center;
+            border-bottom: 2px solid rgba(240, 179, 16, 0.35);
+        }
+        .grind-hero .hook {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            color: var(--msub-gold);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .grind-hero .hook-line { display: block; }
+        .grind-hero .signature-name {
+            font-family: 'Caveat', cursive;
+            font-weight: 600;
+            font-size: clamp(2.4rem, 6vw, 3.2rem);
+            color: #fff;
+            margin: 0 0 20px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .grind-hero .bridge {
+            max-width: 560px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.92);
+        }
+        .grind-hero .bridge strong { color: var(--msub-gold); }
+
+        /* Daily Stack / Synergy Stack */
+        .stack-section { margin-bottom: 40px; }
+        .stack-section .section-title { margin-bottom: 20px; }
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        @media (max-width: 640px) { .stack-grid { grid-template-columns: 1fr; } }
+        .stack-card {
+            background: rgba(21, 53, 109, 0.5);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid rgba(240, 179, 16, 0.25);
+            text-align: center;
+        }
+        .stack-card .stack-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            border-radius: 50px;
+            background: rgba(240, 179, 16, 0.2);
+            color: var(--msub-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .stack-card .stack-name {
+            font-weight: 700;
+            color: #e0e8f0;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .stack-card .stack-purpose {
+            font-size: 0.75rem;
+            color: var(--msub-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .stack-card .stack-dose {
+            font-size: 0.75rem;
+            color: #8a9fb8;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Wellness Dashboard */
+        .wellness-dash {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        @media (max-width: 420px) { .wellness-dash { grid-template-columns: 1fr; } }
+        .wellness-card {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid rgba(240, 179, 16, 0.2);
+            text-align: center;
+        }
+        .wellness-card .wellness-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--msub-gold);
+            margin-bottom: 4px;
+        }
+        .wellness-card .wellness-label {
+            font-size: 0.8rem;
+            color: #8a9fb8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Journal: vertical timeline */
+        .journal-section { margin-bottom: 48px; }
+        .journal-timeline {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        .journal-timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--msub-gold), rgba(240,179,16,0.2));
+        }
+        .journal-timeline-start {
+            font-size: 0.75rem;
+            color: #8a9fb8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+            padding-left: 56px;
+            position: relative;
+        }
+        .journal-timeline-start::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--msub-blue);
+            border: 2px solid var(--msub-gold);
+            box-sizing: border-box;
+        }
+        .journal-entry {
+            position: relative;
+            padding-left: 56px;
+            padding-bottom: 32px;
+        }
+        .journal-entry:last-child { padding-bottom: 0; }
+        .journal-entry::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--msub-gold);
+            border: 3px solid var(--msub-blue);
+            box-sizing: border-box;
+        }
+        .journal-entry-card {
+            background: rgba(21, 53, 109, 0.35);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(240, 179, 16, 0.22);
+        }
+        .journal-entry-photo {
+            height: 180px;
+            background: linear-gradient(135deg, rgba(21,53,109,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+        .journal-entry-photo i { font-size: 2rem; margin-bottom: 8px; }
+        .journal-entry-phase {
+            font-size: 0.7rem;
+            color: var(--msub-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+        .journal-entry-body { padding: 16px; }
+        .journal-entry-meta {
+            font-size: 0.75rem;
+            color: var(--msub-gold);
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+        .journal-entry-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e0e8f0;
+            margin-bottom: 10px;
+        }
+        .journal-entry-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .journal-entry-tags span {
+            font-size: 0.7rem;
+            color: #8a9fb8;
+            background: rgba(0,0,0,0.3);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* Coming Soon zero-state */
+        .journal-coming-soon {
+            background: rgba(21, 53, 109, 0.4);
+            border: 1px dashed rgba(240, 179, 16, 0.4);
+            border-radius: 14px;
+            padding: 32px 24px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        .journal-coming-soon .cs-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--msub-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        .journal-coming-soon .cs-bar-wrap {
+            height: 6px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50px;
+            overflow: hidden;
+            max-width: 240px;
+            margin: 0 auto 8px;
+        }
+        .journal-coming-soon .cs-bar {
+            height: 100%;
+            width: 35%;
+            background: linear-gradient(90deg, var(--msub-gold), var(--msub-blue));
+            border-radius: 50px;
+            transition: width 0.4s ease;
+        }
+        .journal-coming-soon .cs-copy {
+            font-size: 0.85rem;
+            color: #8a9fb8;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50px;
+            background: var(--msub-gold);
+            color: var(--msub-blue);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+            z-index: 500;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: scale(1.08);
+            background: var(--msub-gold-hover);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-logo">Donald Voetberg</a>
+        <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
+        <nav class="site-nav"></nav>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+    </header>
+
+    <section class="grind-hero">
+        <p class="hook">
+            <span class="hook-line">1,000 miles from home.</span>
+            <span class="hook-line">3,000 feet of elevation change.</span>
+            <span class="hook-line">One goal.</span>
+        </p>
+        <h2 class="signature-name">Donald Voetberg</h2>
+        <p class="bridge">
+            He’s a <strong>Wisconsin state champion</strong>—but in Montana he’s a <strong>Rookie</strong>. The mountains don’t care about your PRs back home. The grind is what closes the gap: the unseen hours, the daily stack, and the commitment to show up when nobody’s watching. This is where that story gets documented.
+        </p>
+    </section>
+
+    <main class="page-content">
+        <section class="stack-section">
+            <h3 class="section-title">Daily Stack — Synergy Protocol</h3>
+            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 20px;">Lunch-time protocol for natural lactate buffering and altitude-ready recovery before high-intensity track sessions.</p>
+            <div class="stack-grid">
+                <article class="stack-card protocol-card">
+                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="stack-name">Broccoli Sprout Powder</div>
+                    <div class="stack-purpose">Natural Lactate Buffer</div>
+                </article>
+                <article class="stack-card protocol-card">
+                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="stack-name">Fresh Sprouts</div>
+                    <div class="stack-purpose">Recovery &amp; Antioxidants</div>
+                </article>
+                <article class="stack-card protocol-card">
+                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="stack-name">Beet Root Juice</div>
+                    <div class="stack-purpose">Altitude &amp; Endurance</div>
+                </article>
+            </div>
+            <h4 class="section-title" style="font-size: 0.8rem; margin-bottom: 12px;">Wellness Dashboard</h4>
+            <div class="wellness-dash">
+                <div class="wellness-card">
+                    <div class="wellness-value" id="wellness-miles">—</div>
+                    <div class="wellness-label">Weekly mileage</div>
+                </div>
+                <div class="wellness-card">
+                    <div class="wellness-value" id="wellness-days">—</div>
+                    <div class="wellness-label">Days to departure</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="journal-section">
+            <h3 class="section-title">The Journal</h3>
+            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 24px;">Micro-log: fueling, recovery, and logistics. Raw moments from the build. Feed begins Feb 10, 2026.</p>
+            <ul class="journal-timeline">
+                <li class="journal-timeline-start">Feed starts Feb 10, 2026</li>
+                <li class="journal-entry">
+                    <article class="journal-entry-card">
+                        <div class="journal-entry-photo" role="img" aria-label="Dark track session before sunrise">
+                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-shoe-prints" aria-hidden="true"></i> Dark track session</span>
+                        </div>
+                        <div class="journal-entry-body">
+                            <div class="journal-entry-meta">Feb 10, 2026</div>
+                            <div class="journal-entry-phase">Phase: Altitude Acclimation Prep</div>
+                            <p class="journal-entry-text">Threshold pursuit to open the week. Synergy stack at lunch, then technical efficiency block. The kind of morning that only shows up in the log.</p>
+                            <div class="journal-entry-tags">
+                                <span>#Recovery</span>
+                                <span>#Fueling</span>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                <li class="journal-entry">
+                    <article class="journal-entry-card">
+                        <div class="journal-entry-photo" role="img" aria-label="Quiet meal prep moment">
+                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Meal prep moment</span>
+                        </div>
+                        <div class="journal-entry-body">
+                            <div class="journal-entry-meta">Feb 11, 2026</div>
+                            <div class="journal-entry-phase">Phase: Foundation</div>
+                            <p class="journal-entry-text">Batch prepped for the week. One less decision when the alarm goes off—fueling and logistics locked in so the focus stays on the work.</p>
+                            <div class="journal-entry-tags">
+                                <span>#Fueling</span>
+                                <span>#Logistics</span>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                <li class="journal-entry">
+                    <article class="journal-entry-card">
+                        <div class="journal-entry-photo" role="img" aria-label="Muddy grind conditions">
+                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-mountain" aria-hidden="true"></i> Muddy grind</span>
+                        </div>
+                        <div class="journal-entry-body">
+                            <div class="journal-entry-meta">Feb 12, 2026</div>
+                            <div class="journal-entry-phase">Phase: Aerobic Foundation Session</div>
+                            <p class="journal-entry-text">Neuromuscular prime in tough conditions. Nothing like Montana yet—which is exactly why we log it now.</p>
+                            <div class="journal-entry-tags">
+                                <span>#Recovery</span>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+            <div class="journal-coming-soon">
+                <div class="cs-title">Coming Soon</div>
+                <div class="cs-bar-wrap"><div class="cs-bar" aria-hidden="true"></div></div>
+                <p class="cs-copy">More entries as the season and move progress. The feed grows with the grind.</p>
+            </div>
+        </section>
+    </main>
+
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://instagram.com/donald.voetberg" class="footer-social-btn btn-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@donald.voetberg" class="footer-social-btn btn-tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/DonaldVoetberg" class="footer-social-btn btn-x" aria-label="X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@Donald.Voetberg" class="footer-social-btn btn-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-contact">Business &amp; media: <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a></p>
+        <p class="footer-tagline">Donald Voetberg · SPASH '26 ➔ MSUB XC/Track Commit</p>
+    </footer>
+
+    <script>
+        (function() {
+            var t = document.querySelector('.nav-toggle');
+            var n = document.querySelector('.site-nav');
+            if (t && n) t.addEventListener('click', function() { n.classList.toggle('open'); });
+
+            var btt = document.getElementById('back-to-top');
+            if (btt) {
+                function toggleBtt() {
+                    if (window.scrollY > 400) btt.classList.add('visible');
+                    else btt.classList.remove('visible');
+                }
+                window.addEventListener('scroll', toggleBtt, { passive: true });
+                toggleBtt();
+                btt.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            var dep = document.getElementById('wellness-days');
+            if (dep) {
+                var target = new Date(2026, 7, 1);
+                var today = new Date();
+                today.setHours(0, 0, 0, 0);
+                target.setHours(0, 0, 0, 0);
+                var diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+                dep.textContent = diff > 0 ? diff : '—';
+            }
+            var miles = document.getElementById('wellness-miles');
+            if (miles) miles.textContent = '—';
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fisherman | Donald Voetberg — Fishing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .species-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+        @media (max-width: 500px) { .species-grid { grid-template-columns: 1fr; } }
+        .species-card { background: rgba(21,53,109,0.4); border: 1px solid rgba(240,179,16,0.3); border-radius: 12px; padding: 16px; }
+        .species-card h4 { color: #F0B310; margin: 0 0 8px; font-size: 0.95rem; }
+        .species-card p { margin: 0; font-size: 0.9rem; color: #a8c0e8; }
+        .gallery-placeholder { background: rgba(0,0,0,0.3); border: 2px dashed rgba(240,179,16,0.4); border-radius: 12px; padding: 48px 24px; text-align: center; color: #8a9fb8; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-logo">Donald Voetberg</a>
+        <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
+        <nav class="site-nav"></nav>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+    </header>
+
+    <section class="subpage-hero">
+        <h1>The Fisherman</h1>
+        <p>Fishing—Wisconsin roots, Montana fly fishing, and the learning curve.</p>
+    </section>
+
+    <main class="page-content">
+        <section style="margin-bottom: 32px;">
+            <h3 class="section-title">Species Tracker</h3>
+            <p style="color: #a8c0e8; margin-bottom: 16px;">WI catches vs. Montana fly fishing (updates as the journey continues)</p>
+            <div class="species-grid">
+                <div class="species-card">
+                    <h4>Wisconsin</h4>
+                    <p>Bass, panfish, trout — local waters. More species to log.</p>
+                </div>
+                <div class="species-card">
+                    <h4>Montana</h4>
+                    <p>Fly fishing attempts — learning curve and first Big Sky catches to come.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="section-title">Learning Curve</h3>
+            <p style="color: #a8c0e8; margin-bottom: 16px;">Fails, tangles, and progress—photo gallery placeholder.</p>
+            <div class="gallery-placeholder">Photo gallery: coming soon</div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="https://instagram.com/donald.voetberg" class="footer-social-btn btn-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@donald.voetberg" class="footer-social-btn btn-tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/DonaldVoetberg" class="footer-social-btn btn-x" aria-label="X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@Donald.Voetberg" class="footer-social-btn btn-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer-contact">Business &amp; media: <a href="mailto:contact@donaldvoetberg.com">contact@donaldvoetberg.com</a></p>
+        <p class="footer-tagline">Donald Voetberg · SPASH '26 ➔ MSUB XC/Track Commit</p>
+    </footer>
+
+    <script>
+        var t = document.querySelector('.nav-toggle');
+        var n = document.querySelector('.site-nav');
+        if (t && n) t.addEventListener('click', function() { n.classList.toggle('open'); });
+    </script>
+</body>
+</html>
