@@ -279,6 +279,37 @@ body {
     transform: scale(1.05);
 }
 
+/* ----- Featured Video (9:16 vertical) ----- */
+.featured-video-section {
+    padding: 48px 20px;
+    text-align: center;
+    background: rgba(13, 13, 13, 0.6);
+}
+.featured-video-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--msub-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+}
+.featured-video-wrapper {
+    aspect-ratio: 9 / 16;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+.featured-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
 /* ----- Page content wrapper ----- */
 .page-content {
     max-width: 720px;

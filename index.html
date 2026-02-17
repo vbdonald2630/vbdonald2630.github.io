@@ -41,6 +41,15 @@
         </div>
     </section>
 
+    <section class="featured-video-section" aria-label="The Journey Begins">
+        <h2 class="featured-video-title">The Journey Begins</h2>
+        <div class="featured-video-wrapper">
+            <video class="featured-video" controls playsinline poster="images/launch-poster.jpg">
+                <source src="images/DonaldLaunch.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
     <section class="news-section" aria-label="In the news">
         <div class="news-section-inner">
             <h2 class="news-section-title">In The News</h2>
@@ -94,6 +103,12 @@
             var n = document.querySelector('.site-nav');
             if (t && n) {
                 t.addEventListener('click', function() { n.classList.toggle('open'); });
+            }
+            var fv = document.querySelector('.featured-video');
+            if (fv) {
+                fv.addEventListener('click', function() {
+                    if (fv.paused) fv.play();
+                });
             }
         })();
     </script>
