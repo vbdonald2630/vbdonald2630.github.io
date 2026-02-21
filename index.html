@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://donaldvoetberg.com/" />
     <title>Donald Voetberg | SPASH '26 ➔ MSUB Commit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <script type="application/ld+json">
@@ -21,31 +24,51 @@
 </head>
 <body>
 
-    <header class="site-header">
+    <header class="site-header" id="site-header">
         <a href="index.html" class="site-logo">Donald Voetberg</a>
         <button class="nav-toggle" aria-label="Toggle menu" type="button">☰</button>
         <nav class="site-nav"></nav>
         <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="header-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
     </header>
 
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto" disablePictureInPicture poster="images/thumbnail.png">
-            <source src="images/donalds_leaving_wallace_chasing.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="container">
-            <img src="images/profile.png" alt="Donald Voetberg" class="profile-img">
-            <h1>Donald Voetberg</h1>
-            <h2><span class="sub-spash">SPASH '26</span> ➔ <a href="https://www.msubillings.edu/" target="_blank" rel="noopener noreferrer" class="sub-msub-blue" style="text-decoration: none;">MSUB</a> <span class="sub-msub-gold">XC/Track</span> <span class="sub-msub-blue">Commit</span></h2>
-            <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="hero-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
-            <p class="bio">Forging a bold new path from Wisconsin's familiarity to Big Sky's possibilities.</p>
+    <section class="hero-video-section" aria-label="Featured video">
+        <div class="hero-video-wrapper">
+            <iframe src="https://www.youtube.com/embed/1mEAAAcvv4g" title="Donald Voetberg — The Launchpad: Final Season at SPASH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
 
-    <section class="youtube-featured-section" aria-label="Featured video">
-        <h2 class="youtube-featured-title">The Launchpad: Final Season at SPASH</h2>
-        <div class="youtube-embed-wrapper">
-            <iframe src="https://www.youtube.com/embed/1mEAAAcvv4g" title="Donald Voetberg — The Launchpad: Final Season at SPASH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <section class="journal-cta-bar" aria-label="Sunday Journal signup">
+        <div class="journal-cta-inner">
+            <p class="journal-cta-text">Entry #001 drops Sunday. Join the Crew.</p>
+            <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="journal-cta-btn" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+        </div>
+    </section>
+
+    <section class="identity-block" aria-label="About">
+        <h1 class="identity-name">Donald Voetberg</h1>
+        <p class="identity-subtitle"><span class="sub-spash">SPASH '26</span> ➔ <a href="https://www.msubillings.edu/" target="_blank" rel="noopener noreferrer" class="sub-msub-link">MSUB</a> <span class="sub-msub-gold">XC/Track</span> <span class="sub-msub-blue">Commit</span></p>
+        <a href="https://forms.gle/r3KvJMkmX9cNtNFJ8" class="identity-cta" target="_blank" rel="noopener noreferrer">Join the Crew</a>
+        <p class="identity-bio">Forging a bold new path from Wisconsin's familiarity to Big Sky's possibilities.</p>
+    </section>
+
+    <section class="pillars-section" aria-label="The 3 Pillars">
+        <h2 class="pillars-title">The 3 Pillars</h2>
+        <div class="pillars-grid">
+            <article class="pillar-card">
+                <h3 class="pillar-heading">The Pursuit</h3>
+                <p class="pillar-text">The vlog series. Raw footage from the build—training, mindset, and the road to Montana.</p>
+                <span class="pillar-coming-soon">Page coming soon</span>
+            </article>
+            <article class="pillar-card">
+                <h3 class="pillar-heading">The Grind</h3>
+                <p class="pillar-text">Daily stack. Fueling, recovery, and logistics. The micro-log of what it takes.</p>
+                <span class="pillar-coming-soon">Page coming soon</span>
+            </article>
+            <article class="pillar-card">
+                <h3 class="pillar-heading">The Journey</h3>
+                <p class="pillar-text">Transition to Montana. The vessel, the move, and the countdown to MSUB.</p>
+                <span class="pillar-coming-soon">Page coming soon</span>
+            </article>
         </div>
     </section>
 
@@ -94,19 +117,6 @@
 
     <script>
         (function() {
-            var v = document.querySelector('.hero-video');
-            if (v) {
-                v.muted = true;
-                v.volume = 0;
-                function tryPlay() { v.muted = true; v.play().catch(function() {}); }
-                tryPlay();
-                v.addEventListener('loadeddata', tryPlay);
-                v.addEventListener('canplay', tryPlay);
-                document.addEventListener('DOMContentLoaded', function() { setTimeout(tryPlay, 100); });
-                document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'visible') tryPlay(); });
-                document.body.addEventListener('touchstart', function once() { tryPlay(); document.body.removeEventListener('touchstart', once); }, { passive: true });
-                document.body.addEventListener('click', function once() { tryPlay(); }, { once: true });
-            }
             var t = document.querySelector('.nav-toggle');
             var n = document.querySelector('.site-nav');
             if (t && n) {
@@ -117,6 +127,13 @@
                 fv.addEventListener('click', function() {
                     if (fv.paused) fv.play();
                 });
+            }
+            var header = document.getElementById('site-header');
+            if (header) {
+                function onScroll() {
+                    header.classList.toggle('scrolled', window.scrollY > 50);
+                }
+                window.addEventListener('scroll', onScroll, { passive: true });
             }
         })();
     </script>

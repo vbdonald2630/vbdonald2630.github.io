@@ -7,20 +7,21 @@
     --bg-dark: #0d0d0d;
     --text-light: #e0e8f0;
     --text-muted: #a8c0e8;
+    --section-padding: 58px;
 }
 
 * { box-sizing: border-box; }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-light);
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    padding-top: 56px; /* space for sticky header */
+    padding-top: 56px;
 }
 
-/* ----- Global Sticky Header ----- */
+/* ----- Global Sticky Header (shrink 30% on scroll) ----- */
 .site-header {
     position: fixed;
     top: 0;
@@ -35,10 +36,18 @@ body {
     background: rgba(13, 13, 13, 0.95);
     border-bottom: 2px solid var(--msub-gold);
     backdrop-filter: blur(10px);
+    transition: height 0.25s ease, padding 0.25s ease;
 }
+.site-header.scrolled {
+    height: 40px;
+    padding: 0 16px;
+}
+.site-header.scrolled .site-logo { font-size: 0.95rem; }
+.site-header.scrolled .header-cta { padding: 6px 14px; font-size: 0.75rem; }
 .site-logo {
     font-weight: 800;
     font-size: 1.1rem;
+    transition: font-size 0.25s ease;
     color: var(--msub-gold);
     text-decoration: none;
     letter-spacing: -0.5px;
@@ -67,6 +76,7 @@ body {
     background: var(--msub-gold);
     color: var(--msub-blue);
     padding: 8px 18px;
+    transition: background 0.2s, transform 0.2s, padding 0.25s ease, font-size 0.25s ease;
     border-radius: 20px;
     font-weight: 700;
     font-size: 0.85rem;
@@ -113,10 +123,10 @@ body {
     .header-cta { margin-left: auto; margin-right: 8px; }
 }
 
-/* ----- Site-wide Footer ----- */
+/* ----- Site-wide Footer (socials small & unobtrusive) ----- */
 .site-footer {
-    margin-top: 48px;
-    padding: 32px 20px 24px;
+    margin-top: 58px;
+    padding: 40px 20px 28px;
     background: var(--msub-blue);
     border-top: 3px solid var(--msub-gold);
     text-align: center;
@@ -134,14 +144,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     color: rgba(255, 255, 255, 0.85);
     background: rgba(255, 255, 255, 0.12);
     border: none;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .site-footer .footer-social-btn:hover {
@@ -181,87 +191,191 @@ body {
     margin-top: 12px;
 }
 
-/* ----- Homepage Hero ----- */
-.hero {
+/* ----- Hero Video (80% desktop, 100% mobile) ----- */
+.hero-video-section {
+    padding: var(--section-padding) 0;
+    background: var(--bg-dark);
+}
+.hero-video-wrapper {
     position: relative;
-    min-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
 }
-.hero::after {
-    content: "";
+.hero-video-wrapper iframe {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    right: 0;
-    height: 140px;
-    background: linear-gradient(to bottom, transparent, var(--msub-blue));
-    pointer-events: none;
-    z-index: 1;
-}
-.hero-video {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+@media (min-width: 769px) {
+    .hero-video-wrapper {
+        width: 80%;
+        max-width: 640px;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
 }
-.hero .container {
-    position: relative;
-    z-index: 2;
-    max-width: 480px;
+
+/* ----- Sunday Journal CTA Bar (~100px) ----- */
+.journal-cta-bar {
+    background: var(--msub-blue);
+    padding: 0 20px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid var(--msub-gold);
+    border-bottom: 2px solid var(--msub-gold);
+}
+.journal-cta-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 24px;
+    max-width: 720px;
     width: 100%;
 }
-.hero h1 {
-    margin-bottom: 0.3rem;
-    letter-spacing: -1px;
-    color: var(--msub-gold);
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
-    font-size: clamp(1.8rem, 5vw, 2.4rem);
-}
-.hero h2 {
-    margin: 0 0 1rem;
+.journal-cta-text {
+    color: #fff;
     font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+.journal-cta-btn {
+    display: inline-block;
+    background: var(--msub-gold);
+    color: var(--msub-blue) !important;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.2s;
+}
+.journal-cta-btn:hover {
+    background: var(--msub-gold-hover);
+    transform: scale(1.03);
+}
+
+/* ----- Identity Block (above pillars) ----- */
+.identity-block {
+    padding: var(--section-padding) 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.identity-name {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--msub-gold);
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+}
+.identity-subtitle {
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-muted);
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 8px;
+    margin: 0 0 16px;
+}
+.identity-subtitle .sub-spash { color: #ff6b7a; }
+.identity-subtitle .sub-msub-gold { color: var(--msub-gold); }
+.identity-subtitle .sub-msub-blue { color: #6ba3e8; }
+.identity-subtitle .sub-msub-link {
+    color: #6ba3e8;
+    text-decoration: none;
+}
+.identity-subtitle .sub-msub-link:hover { text-decoration: underline; }
+.identity-cta {
     display: inline-block;
+    background: var(--msub-gold);
+    color: var(--msub-blue);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    transition: background 0.2s, transform 0.2s;
 }
-.hero h2 .sub-spash { color: #ff6b7a; font-weight: 700; }
-.hero h2 .sub-msub-blue { color: #6ba3e8; font-weight: 700; }
-.hero h2 .sub-msub-gold { color: var(--msub-gold); font-weight: 700; }
-.hero .profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 20px;
-    border: 4px solid var(--msub-blue);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+.identity-cta:hover {
+    background: var(--msub-gold-hover);
+    transform: scale(1.02);
 }
-.hero .bio {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+.identity-bio {
+    font-size: 0.95rem;
     line-height: 1.6;
-    font-size: 1.05rem;
-    padding: 12px 16px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
+    color: var(--text-light);
+    margin: 0;
 }
+
+/* ----- 3 Pillars (Data Sheet feel) ----- */
+.pillars-section {
+    padding: var(--section-padding) 20px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.pillars-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--msub-gold);
+    letter-spacing: -0.02em;
+    margin: 0 0 32px;
+    text-align: center;
+}
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+.pillar-card {
+    background: rgba(21, 53, 109, 0.25);
+    border: 1px solid rgba(240, 179, 16, 0.25);
+    border-radius: 12px;
+    padding: 24px;
+}
+.pillar-heading {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--msub-gold);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+}
+.pillar-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+}
+.pillar-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--msub-gold);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.pillar-link:hover { color: var(--msub-gold-hover); }
+.pillar-coming-soon {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-style: italic;
+}
+@media (max-width: 768px) {
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----- Legacy hero/cta (for subpages) ----- */
 .hero-cta {
     display: inline-block;
     background: var(--msub-gold);
@@ -279,52 +393,9 @@ body {
     transform: scale(1.05);
 }
 
-/* ----- YouTube Featured (16:9) ----- */
-.youtube-featured-section {
-    padding: 48px 20px;
-    text-align: center;
-    background: rgba(13, 13, 13, 0.6);
-}
-.youtube-featured-title {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--msub-gold);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0 0 24px;
-}
-.youtube-embed-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto 24px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    aspect-ratio: 16 / 9;
-}
-.youtube-embed-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.youtube-bridge-copy {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0 auto 20px;
-    max-width: 480px;
-    text-align: center;
-}
-.youtube-bridge-cta {
-    display: inline-block;
-}
-
 /* ----- Featured Video (9:16 vertical) ----- */
 .featured-video-section {
-    padding: 48px 20px;
+    padding: var(--section-padding) 20px;
     text-align: center;
     background: rgba(13, 13, 13, 0.6);
 }
@@ -395,7 +466,7 @@ body {
 /* ----- In The News (homepage) ----- */
 .news-section {
     background: var(--msub-blue);
-    padding: 48px 20px 56px;
+    padding: var(--section-padding) 20px 68px;
 }
 .news-section-inner {
     max-width: 960px;
