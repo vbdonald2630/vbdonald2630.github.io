@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grind | Donald Voetberg — About &amp; Journal</title>
+    <meta name="description" content="Donald Voetberg weekly training log. Running miles, cross-training, and daily activities for the week of February 16 and beyond.">
+    <title>The Grind | Donald Voetberg — Weekly Training Log</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +44,7 @@
             color: rgba(255,255,255,0.92);
         }
         .grind-hero .bridge strong { color: var(--msub-gold); }
+        .grind-hero .bridge strong.rookie-text { color: #fff; }
 
         /* Daily Stack / Synergy Stack */
         .stack-section { margin-bottom: 40px; }
@@ -121,112 +123,130 @@
             letter-spacing: 0.06em;
         }
 
-        /* Journal: vertical timeline */
-        .journal-section { margin-bottom: 48px; }
-        .journal-timeline {
-            list-style: none;
+        /* Weekly Training Log */
+        .weekly-log-section { margin-bottom: 48px; }
+        .week-card {
+            background: rgba(21, 53, 109, 0.35);
+            border-radius: 14px;
+            border: 1px solid rgba(240, 179, 16, 0.25);
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .week-header {
+            background: rgba(21, 53, 109, 0.6);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(240, 179, 16, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .week-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--msub-gold);
+            margin: 0;
+        }
+        .week-total {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #e0e8f0;
+            background: rgba(0,0,0,0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+        .week-total span { color: var(--msub-gold); }
+        .week-days {
             padding: 0;
             margin: 0;
-            position: relative;
+            list-style: none;
         }
-        .journal-timeline::before {
-            content: "";
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--msub-gold), rgba(240,179,16,0.2));
+        .week-day {
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(240, 179, 16, 0.1);
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            gap: 16px;
+            align-items: start;
         }
-        .journal-timeline-start {
+        .week-day:last-child { border-bottom: none; }
+        @media (max-width: 560px) {
+            .week-day {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+        .day-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--msub-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .day-activity {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #e0e8f0;
+        }
+        .day-activity .day-notes {
+            font-size: 0.85rem;
+            color: #8a9fb8;
+            margin-top: 4px;
+        }
+        .day-meta {
             font-size: 0.75rem;
             color: #8a9fb8;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 20px;
-            padding-left: 56px;
-            position: relative;
+            text-align: right;
+            white-space: nowrap;
         }
-        .journal-timeline-start::before {
-            content: "";
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--msub-blue);
-            border: 2px solid var(--msub-gold);
-            box-sizing: border-box;
-        }
-        .journal-entry {
-            position: relative;
-            padding-left: 56px;
-            padding-bottom: 32px;
-        }
-        .journal-entry:last-child { padding-bottom: 0; }
-        .journal-entry::before {
-            content: "";
-            position: absolute;
-            left: 12px;
-            top: 6px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--msub-gold);
-            border: 3px solid var(--msub-blue);
-            box-sizing: border-box;
-        }
-        .journal-entry-card {
-            background: rgba(21, 53, 109, 0.35);
+        .day-meta span { font-variant-numeric: tabular-nums; }
+        .day-rest { color: #8a9fb8; }
+        .day-rest .day-name { color: #8a9fb8; }
+
+        /* Live Training Log / Strava */
+        .strava-live-section {
+            background: rgba(21, 53, 109, 0.5);
+            border: 1px solid rgba(240, 179, 16, 0.35);
             border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(240, 179, 16, 0.22);
-        }
-        .journal-entry-photo {
-            height: 180px;
-            background: linear-gradient(135deg, rgba(21,53,109,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            padding: 18px 20px;
+            margin-bottom: 32px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.8rem;
+            gap: 12px 20px;
         }
-        .journal-entry-photo i { font-size: 2rem; margin-bottom: 8px; }
-        .journal-entry-phase {
-            font-size: 0.7rem;
-            color: var(--msub-gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 6px;
+        .strava-live-section .section-title {
+            width: 100%;
+            margin-bottom: 0;
         }
-        .journal-entry-body { padding: 16px; }
-        .journal-entry-meta {
-            font-size: 0.75rem;
-            color: var(--msub-gold);
-            margin-bottom: 8px;
-            font-variant-numeric: tabular-nums;
-        }
-        .journal-entry-text {
+        .strava-hook {
             font-size: 0.95rem;
             line-height: 1.5;
             color: #e0e8f0;
-            margin-bottom: 10px;
+            margin: 0;
+            flex: 1;
+            min-width: 200px;
         }
-        .journal-entry-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+        .strava-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FC4C02;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            flex-shrink: 0;
         }
-        .journal-entry-tags span {
-            font-size: 0.7rem;
-            color: #8a9fb8;
-            background: rgba(0,0,0,0.3);
-            padding: 4px 8px;
-            border-radius: 6px;
+        .strava-cta-btn:hover {
+            background: #e04402;
+            transform: scale(1.02);
         }
+        .strava-cta-btn i { font-size: 1.1rem; }
 
         /* Coming Soon zero-state */
         .journal-coming-soon {
@@ -313,101 +333,86 @@
         </p>
         <h2 class="signature-name">Donald Voetberg</h2>
         <p class="bridge">
-            He’s a <strong>Wisconsin state champion</strong>—but in Montana he’s a <strong>Rookie</strong>. The mountains don’t care about your PRs back home. The grind is what closes the gap: the unseen hours, the daily stack, and the commitment to show up when nobody’s watching. This is where that story gets documented.
+            He was part of a <a href="https://www.waow.com/news/top-stories/four-straight-and-forever-spash-seniors-lead-panthers-to-historic-4-peat/article_1353559e-700c-40d9-a6f2-fa25cc14c5c2.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;"><strong>historic Wisconsin state championship cross country team</strong></a>—but in Montana just a <strong class="rookie-text">Rookie</strong>. The mountains don’t care about your PRs back home. The grind is what closes the gap: the unseen hours, the daily stack, and the commitment to show up when nobody’s watching. This is where that story gets documented.
         </p>
     </section>
 
     <main class="page-content">
-        <section class="stack-section">
-            <h3 class="section-title">Daily Stack — Synergy Protocol</h3>
-            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 20px;">Lunch-time protocol for natural lactate buffering and altitude-ready recovery before high-intensity track sessions.</p>
-            <div class="stack-grid">
-                <article class="stack-card protocol-card">
-                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
-                    <div class="stack-name">Broccoli Sprout Powder</div>
-                    <div class="stack-purpose">Natural Lactate Buffer</div>
-                </article>
-                <article class="stack-card protocol-card">
-                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></div>
-                    <div class="stack-name">Fresh Sprouts</div>
-                    <div class="stack-purpose">Recovery &amp; Antioxidants</div>
-                </article>
-                <article class="stack-card protocol-card">
-                    <div class="stack-icon" aria-hidden="true"><i class="fa-solid fa-droplet"></i></div>
-                    <div class="stack-name">Beet Root Juice</div>
-                    <div class="stack-purpose">Altitude &amp; Endurance</div>
-                </article>
-            </div>
-            <h4 class="section-title" style="font-size: 0.8rem; margin-bottom: 12px;">Wellness Dashboard</h4>
-            <div class="wellness-dash">
-                <div class="wellness-card">
-                    <div class="wellness-value" id="wellness-miles">—</div>
-                    <div class="wellness-label">Weekly mileage</div>
-                </div>
-                <div class="wellness-card">
-                    <div class="wellness-value" id="wellness-days">—</div>
-                    <div class="wellness-label">Days to departure</div>
-                </div>
-            </div>
+        <section class="strava-live-section">
+            <h3 class="section-title">Live Training Log</h3>
+            <p class="strava-hook">See the miles behind the mission. Follow Donald's live training data on Strava.</p>
+            <a href="https://www.strava.com/athletes/donaldvoetberg" class="strava-cta-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-strava" aria-hidden="true"></i> View Live Stats</a>
         </section>
 
-        <section class="journal-section">
-            <h3 class="section-title">The Journal</h3>
-            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 24px;">Micro-log: fueling, recovery, and logistics. Raw moments from the build. Feed begins Feb 10, 2026.</p>
-            <ul class="journal-timeline">
-                <li class="journal-timeline-start">Feed starts Feb 10, 2026</li>
-                <li class="journal-entry">
-                    <article class="journal-entry-card">
-                        <div class="journal-entry-photo" role="img" aria-label="Dark track session before sunrise">
-                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-shoe-prints" aria-hidden="true"></i> Dark track session</span>
+        <section class="weekly-log-section">
+            <h3 class="section-title">Weekly Training Log</h3>
+            <p style="color: #a8c0e8; font-size: 0.9rem; margin-bottom: 24px;">Work put in for the week. Running miles, cross-training, and key notes. One update per week—easier to follow, less maintenance.</p>
+
+            <article class="week-card">
+                <div class="week-header">
+                    <h4 class="week-title">Week of February 16–22</h4>
+                    <div class="week-total"><span>38</span> miles</div>
+                </div>
+                <ul class="week-days">
+                    <li class="week-day">
+                        <span class="day-name">Monday</span>
+                        <div class="day-activity">
+                            6 mi base (7:30/mi), strides, Core Routine
+                            <p class="day-notes">Felt really good, no concerns.</p>
                         </div>
-                        <div class="journal-entry-body">
-                            <div class="journal-entry-meta">Feb 10, 2026</div>
-                            <div class="journal-entry-phase">Phase: Altitude Acclimation Prep</div>
-                            <p class="journal-entry-text">Threshold pursuit to open the week. Synergy stack at lunch, then technical efficiency block. The kind of morning that only shows up in the log.</p>
-                            <div class="journal-entry-tags">
-                                <span>#Recovery</span>
-                                <span>#Fueling</span>
-                            </div>
+                        <div class="day-meta">Feel 9/10 · 9hr sleep</div>
+                    </li>
+                    <li class="week-day">
+                        <span class="day-name">Tuesday</span>
+                        <div class="day-activity">
+                            7.5 mi in super windy conditions
+                            <p class="day-notes">Ran up incline on way back to offset wind. Workout still went well.</p>
                         </div>
-                    </article>
-                </li>
-                <li class="journal-entry">
-                    <article class="journal-entry-card">
-                        <div class="journal-entry-photo" role="img" aria-label="Quiet meal prep moment">
-                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Meal prep moment</span>
+                        <div class="day-meta">Feel 8/10 · 8hr sleep</div>
+                    </li>
+                    <li class="week-day">
+                        <span class="day-name">Wednesday</span>
+                        <div class="day-activity">
+                            Hip and Lateral Movement Circuit
+                            <p class="day-notes">Legs a bit sore from Tuesday's windy session.</p>
                         </div>
-                        <div class="journal-entry-body">
-                            <div class="journal-entry-meta">Feb 11, 2026</div>
-                            <div class="journal-entry-phase">Phase: Foundation</div>
-                            <p class="journal-entry-text">Batch prepped for the week. One less decision when the alarm goes off—fueling and logistics locked in so the focus stays on the work.</p>
-                            <div class="journal-entry-tags">
-                                <span>#Fueling</span>
-                                <span>#Logistics</span>
-                            </div>
+                        <div class="day-meta">Feel 8/10 · 9hr sleep</div>
+                    </li>
+                    <li class="week-day">
+                        <span class="day-name">Thursday</span>
+                        <div class="day-activity">
+                            ~7 mi with Cooper, strides
+                            <p class="day-notes">Trails starting to melt—back to soft surface. Felt really good.</p>
                         </div>
-                    </article>
-                </li>
-                <li class="journal-entry">
-                    <article class="journal-entry-card">
-                        <div class="journal-entry-photo" role="img" aria-label="Muddy grind conditions">
-                            <span style="display: flex; flex-direction: column; align-items: center;"><i class="fa-solid fa-mountain" aria-hidden="true"></i> Muddy grind</span>
+                        <div class="day-meta">Feel 9/10 · 9hr sleep</div>
+                    </li>
+                    <li class="week-day">
+                        <span class="day-name">Friday</span>
+                        <div class="day-activity">
+                            7.5 mi treadmill (snow day), 1 mi cooldown
+                            <p class="day-notes">Used incline for effort—paces ballpark. Solid, smooth.</p>
                         </div>
-                        <div class="journal-entry-body">
-                            <div class="journal-entry-meta">Feb 12, 2026</div>
-                            <div class="journal-entry-phase">Phase: Aerobic Foundation Session</div>
-                            <p class="journal-entry-text">Neuromuscular prime in tough conditions. Nothing like Montana yet—which is exactly why we log it now.</p>
-                            <div class="journal-entry-tags">
-                                <span>#Recovery</span>
-                            </div>
+                        <div class="day-meta">Feel 8/10 · 8hr sleep</div>
+                    </li>
+                    <li class="week-day">
+                        <span class="day-name">Saturday</span>
+                        <div class="day-activity">
+                            Morning Lift (Structural and Isometric), evening 10 mi
                         </div>
-                    </article>
-                </li>
-            </ul>
+                        <div class="day-meta">—</div>
+                    </li>
+                    <li class="week-day day-rest">
+                        <span class="day-name">Sunday</span>
+                        <div class="day-activity">—</div>
+                        <div class="day-meta">—</div>
+                    </li>
+                </ul>
+            </article>
+
             <div class="journal-coming-soon">
-                <div class="cs-title">Coming Soon</div>
+                <div class="cs-title">More Weeks</div>
                 <div class="cs-bar-wrap"><div class="cs-bar" aria-hidden="true"></div></div>
-                <p class="cs-copy">More entries as the season and move progress. The feed grows with the grind.</p>
+                <p class="cs-copy">New weeks added as the season progresses. One block per week.</p>
             </div>
         </section>
     </main>
@@ -444,17 +449,6 @@
                 });
             }
 
-            var dep = document.getElementById('wellness-days');
-            if (dep) {
-                var target = new Date(2026, 7, 1);
-                var today = new Date();
-                today.setHours(0, 0, 0, 0);
-                target.setHours(0, 0, 0, 0);
-                var diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-                dep.textContent = diff > 0 ? diff : '—';
-            }
-            var miles = document.getElementById('wellness-miles');
-            if (miles) miles.textContent = '—';
         })();
     </script>
 </body>

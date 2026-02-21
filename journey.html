@@ -14,6 +14,12 @@
         .card h4 { color: #F0B310; margin: 0 0 8px; font-size: 1rem; }
         .card ul { margin: 0; padding-left: 20px; color: #e0e8f0; }
         .card .placeholder { color: #8a9fb8; font-style: italic; }
+        .strava-live-section { background: rgba(21, 53, 109, 0.5); border: 1px solid rgba(240, 179, 16, 0.35); border-radius: 12px; padding: 18px 20px; margin-bottom: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+        .strava-live-section .section-title { width: 100%; margin-bottom: 0; }
+        .strava-hook { font-size: 0.95rem; line-height: 1.5; color: #e0e8f0; margin: 0; flex: 1; min-width: 200px; }
+        .strava-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #FC4C02; color: #fff; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, transform 0.2s; flex-shrink: 0; }
+        .strava-cta-btn:hover { background: #e04402; transform: scale(1.02); }
+        .strava-cta-btn i { font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -30,9 +36,15 @@
     </section>
 
     <main class="page-content">
+        <section class="strava-live-section">
+            <h3 class="section-title">Live Training Log</h3>
+            <p class="strava-hook">See the miles behind the mission. Follow Donald's live training data on Strava.</p>
+            <a href="https://www.strava.com/athletes/donaldvoetberg" class="strava-cta-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-strava" aria-hidden="true"></i> View Live Stats</a>
+        </section>
+
         <section class="countdown-box">
             <div class="big">Countdown to Montana</div>
-            <p>Fall 2026 — MSUB move-in. Dates and milestones will go here.</p>
+            <p>Aug 14, 2026 — Move day. Dates and milestones will go here.</p>
         </section>
 
         <section class="card">
